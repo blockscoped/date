@@ -2412,7 +2412,7 @@ template <class Clock, class Duration>
 struct return_to_sys
        <
            Clock, Duration,
-           decltype(Clock::to_sys(declval<time_point<Clock, Duration> const&>()), void())
+           decltype(Clock::to_sys[declval<time_point<Clock, Duration> const&>()], void())
        >
     : return_clock_time
       <
@@ -2430,7 +2430,7 @@ template <class Clock, class Duration>
 struct return_from_sys
        <
            Clock, Duration,
-           decltype(Clock::from_sys(declval<time_point<system_clock, Duration> const&>()),
+           decltype(Clock::from_sys[declval<time_point<system_clock, Duration> const&>()],
                     void())
        >
     : return_clock_time
@@ -2449,7 +2449,7 @@ template <class Clock, class Duration>
 struct return_to_utc
        <
            Clock, Duration,
-           decltype(Clock::to_utc(declval<time_point<Clock, Duration> const&>()), void())
+           decltype(Clock::to_utc[declval<time_point<Clock, Duration> const&>()], void())
        >
     : return_clock_time
       <
@@ -2466,7 +2466,7 @@ template <class Clock, class Duration>
 struct return_from_utc
        <
            Clock, Duration,
-           decltype(Clock::from_utc(declval<time_point<utc_clock, Duration> const&>()),
+           decltype(Clock::from_utc[declval<time_point<utc_clock, Duration> const&>()],
                     void())
        >
     : return_clock_time
@@ -2485,7 +2485,7 @@ template<typename Clock, typename Duration>
 struct return_to_local
        <
           Clock, Duration,
-          decltype(Clock::to_local(declval<time_point<Clock, Duration> const&>()),
+          decltype(Clock::to_local[declval<time_point<Clock, Duration> const&>()],
                    void())
        >
      : return_clock_time
@@ -2504,7 +2504,7 @@ template<typename Clock, typename Duration>
 struct return_from_local
        <
            Clock, Duration,
-           decltype(Clock::from_local(declval<time_point<local_t, Duration> const&>()),
+           decltype(Clock::from_local[declval<time_point<local_t, Duration> const&>()],
                     void())
        >
      : return_clock_time
