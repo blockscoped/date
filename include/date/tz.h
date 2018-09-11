@@ -2616,14 +2616,14 @@ cc_impl(const time_point<SrcClock, Duration>& t, const void*)
 }
 
 //conversion through utc, 2nd candidate
-template <class DstClock, class SrcClock, class Duration>
-auto
-cc_impl(const time_point<SrcClock, Duration>& t, const void*)
-    -> decltype(0,  // MSVC_WORKAROUND
-                conv_clock<DstClock>(conv_clock<utc_clock>(t)))
-{
-    return conv_clock<DstClock>(conv_clock<utc_clock>(t));
-}
+//template <class DstClock, class SrcClock, class Duration>
+//auto
+//cc_impl(const time_point<SrcClock, Duration>& t, const void*)
+//    -> decltype(0,  // MSVC_WORKAROUND
+//                conv_clock<DstClock>(conv_clock<utc_clock>(t)))
+//{
+//    return conv_clock<DstClock>(conv_clock<utc_clock>(t));
+//}
 
 //conversion through sys and utc, 3rd candidate
 template <class DstClock, class SrcClock, class Duration>
@@ -2635,14 +2635,14 @@ cc_impl(const time_point<SrcClock, Duration>& t, ...)
 }
 
 //conversion through utc and sys, 3rd candidate
-template <class DstClock, class SrcClock, class Duration>
-auto
-cc_impl(const time_point<SrcClock, Duration>& t, ...)
-    -> decltype(0,  // MSVC_WORKAROUND
-                conv_clock<DstClock>(conv_clock<system_clock>(conv_clock<utc_clock>(t))))
-{
-    return conv_clock<DstClock>(conv_clock<system_clock>(conv_clock<utc_clock>(t)));
-}
+//template <class DstClock, class SrcClock, class Duration>
+//auto
+//cc_impl(const time_point<SrcClock, Duration>& t, ...)
+//    -> decltype(0,  // MSVC_WORKAROUND
+//                conv_clock<DstClock>(conv_clock<system_clock>(conv_clock<utc_clock>(t))))
+//{
+//    return conv_clock<DstClock>(conv_clock<system_clock>(conv_clock<utc_clock>(t)));
+//}
 
 }  // namespace clock_cast_detail
 
